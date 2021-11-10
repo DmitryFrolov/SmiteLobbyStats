@@ -1,0 +1,8 @@
+{
+    "python.autoComplete.extraPaths": [
+        "E:/Creative/Codes/SmiteLobbyStats/App",
+    ],
+    "python.analysis.extraPaths": [
+        "E:/Creative/Codes/SmiteLobbyStats/App",
+    ]
+}
