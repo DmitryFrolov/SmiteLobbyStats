@@ -141,3 +141,5 @@ dmypy.json
 
 # project-level ignore
 *dev_creds.json
+temp/
+tmp/
