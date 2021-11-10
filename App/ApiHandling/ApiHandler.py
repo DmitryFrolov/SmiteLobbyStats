@@ -15,7 +15,7 @@ class ApiHandler:
                                    signature=cuts.generate_md5(dev_id=ApiHandler.creds['devId'], method_name='createsession',
                                                                 auth_key=ApiHandler.creds['authKey'], utc_timestamp=cur_ts),
                                    timestamp=cur_ts)
-        return requests.get(endpoint).json()['session_id']
+        return requests.get(endpoint).json()
 
     def custom_request(method_name, session, custom_params) -> dict:
         cur_ts = cuts.make_timestamp()

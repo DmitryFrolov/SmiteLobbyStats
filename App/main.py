@@ -1,14 +1,12 @@
 import Common.Utils as cuts
+from ApiHandling.Session import Session
 from ApiHandling.ApiHandler import ApiHandler
 from ApiHandling.QueueIds import Queue
 from LobbyAnalyzer.LobbyAnalyzer import LobbyAnalyzer
 
 
 if __name__ == '__main__':
-    # TODO: cache session
-    session_id = ApiHandler.create_session()
-    print(f'session: {session_id}')
-
+    session_id = Session()
     # TODO: autofetch lobby data for development
     # mid = ApiHandler.custom_request(method_name='getmatchidsbyqueue', session=session_id,
                             #  custom_params=f'/{Queue.Conquest}/{cuts.make_date()}/18,30')[0]['Match']

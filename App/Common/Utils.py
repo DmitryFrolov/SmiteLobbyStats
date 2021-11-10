@@ -1,4 +1,4 @@
-import os.path
+import os
 import hashlib
 import datetime
 import json
@@ -33,9 +33,15 @@ def get_last_10m_frame():
     return result_timestamp
 
 
-def json_contents(fpath) -> dict:
+def json_contents(fpath: str) -> dict:
     try:
         with open(fpath, 'r') as f:
             return json.load(f)
     except:
         raise RuntimeError(f'Missing file: {os.path.abspath(fpath)}')
+
+
+def dump_to_json(fpath: str, data: dict) -> None:
+    os.makedirs(os.path.dirname(fpath), exist_ok=True)
+    with open(fpath, 'w+') as outfile:
+        json.dump(data, outfile)
