@@ -1,6 +1,6 @@
 import requests
 import Common.Utils as cuts
-
+import Common.TimeHelper as timeh
 
 class ApiHandler:
     creds = cuts.json_contents('dev_creds.json')
@@ -8,8 +8,7 @@ class ApiHandler:
     response_format = 'JSON'
 
     def create_session() -> dict:
-        # explicitly fill session and custom params with empty strings as these values are not used for
-        # session creation
+        # explicitly fill session and custom params with empty strings as these values are not used for session creation
         return ApiHandler.__request_internal(method='createsession', session='', custom_params='')
 
     def common_request(method_name, session, custom_params) -> dict:
@@ -24,8 +23,6 @@ class ApiHandler:
     def get_match_id(session_id, nickname='xGoodGodx') -> str:
         match_id = ApiHandler.common_request(method_name='getplayerstatus', session=session_id,
                                         custom_params = f'/{nickname}')[0]['Match']
-        # match_id = ApiHandler.common_request(method_name='getplayerstatus', session=session_id,
-                                        # custom_params = f'/{nickname}')[0]['match_queue_id']
         print(f"Match Id for {nickname} is '{match_id}'")
         return match_id
 
@@ -45,7 +42,7 @@ class ApiHandler:
 
     def __request_internal(method, session, custom_params):
         # prepare data to fill f-strings
-        timestamp = cuts.make_timestamp()
+        timestamp = timeh.make_timestamp()
         dev_id = ApiHandler.creds['devId']
         api_endpoint = ApiHandler.api_endpoint
         response_format = ApiHandler.response_format
