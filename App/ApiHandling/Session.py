@@ -1,6 +1,5 @@
 import time
 import threading
-import sys
 
 from ApiHandling.ApiHandler import ApiHandler
 import Common.Utils as cuts
@@ -19,6 +18,7 @@ class Session:
     def update_with_sid(self, sid):
         self.id = sid
         self.creation_time = time.time()
+
 
 class SessionManager:
     """

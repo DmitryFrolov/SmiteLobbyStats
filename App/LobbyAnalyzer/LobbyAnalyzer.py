@@ -35,10 +35,6 @@ class LobbyAnalyzer:
 
     def analyze_player_background(self, batch_player_info: dict):
         for player_data in self.team1 + self.team2:
-
-            # print("pid" + str(player_data['player_id']))
-            # print("bpi" + str(batch_player_info))
-
             # only for player that did not hide their account
             if player_data['player_id'] != '0':
                 this_player_account = batch_player_info[player_data['player_id']][0]
@@ -63,6 +59,7 @@ class LobbyAnalyzer:
                                    god=player_data['god'], mastery=player_data['god_mastery'],
                                    playtime=player_data['playtime'], winrate=player_data['winrate']))
 
+    @staticmethod
     def _calc_winrate(player_data) -> None:
         print(f'Wins: {player_data["wins"]}, losses: {player_data["losses"]}')
         winrate_d = int(player_data['wins']) / (1 + int(player_data['wins']) + int(player_data['losses']))
